@@ -14,7 +14,6 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -55,9 +54,8 @@ app.get('/users', function(req, res) {
 
 //Get a user by id
 app.get('/users/:id', function(req, res) {
-    var id = req.params.id, 
-    promise = users.findById(id);
-    function(err, doc) {
+    var id = req.params.id; 
+    users.findById(id, function(err, doc) {
         if (!doc) {
             res.send({ success: false, error: 'Unable to find user'}); 
         } else {
@@ -89,7 +87,7 @@ app.del('/users/:id', function(req, res) {
 
 //Index page
 app.get('/', function(req, res){
-    res.render('index', { title: 'Contacts Manager' });
+    res.sendfile(path.join(__dirname, 'public/index.html'));
 });
 
 http.createServer(app).listen(app.get('port'), function(){
