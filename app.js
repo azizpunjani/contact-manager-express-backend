@@ -66,28 +66,40 @@ app.get('/users/:id', function(req, res) {
 
 //Update a user
 app.put('/users/:id', function(req, res) {
-    users.update(req.params.id, { $set: req.body }, function(){
-        res.send({ success: true });   
+    users.update(req.params.id, { $set: req.body }, function(err, success){
+        if (success) {
+            res.send({ success: true });
+        } else {
+            res.send({ success: false, error: 'Unable to update record'});
+        }
     });
 });
 
 //Create a new user
 app.post('/users', function(req, res) {
-    users.insert(req.body, function(){
-        res.send({ success: true });            
+    users.insert(req.body, function(err, record){
+        if (record) {
+           res.send({ success: true, record: record });
+        } else {
+           res.send({ success: false, error: 'Unable to insert record'});
+        }
     });
 });
 
 //Delete a user
 app.del('/users/:id', function(req, res) {
-    users.remove({ _id: req.params.id }, function(){
-        res.send({ success: true });
+    users.remove({ _id: req.params.id }, function(err, success){
+        if (success) {
+           res.send({ success: true });
+        } else {
+           res.send({ success: false });
+        }
     });
 });
 
 //Index page
 app.get('/', function(req, res){
-    res.sendfile(path.join(__dirname, 'public/index.html'));
+    res.sendfile(path.join(__dirname, 'public/app/index.html'));
 });
 
 http.createServer(app).listen(app.get('port'), function(){
