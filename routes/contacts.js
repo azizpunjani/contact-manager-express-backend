@@ -5,7 +5,7 @@
 var db = require('monk')('localhost/contactManager'),
     contacts = db.get('contacts');
 
-//Get contacts, with optional search query term name=first last
+//Get contacts
 exports.getAll = function(req, res){
     contacts.find({}, function(err, docs){
         if (docs) {
