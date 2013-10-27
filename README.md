@@ -7,13 +7,10 @@ The app has the following RESTful routes.
 
 HTTP Verb | Path | Description
 ---  | --- | ---
-GET  | /contacts | Get a list of all users
-GET  | /contacts/id | Get a specific user by id
-POST | /contacts | Create a new user
-PUT | /contacts/id | Update an existing user
-DELETE | /contacts/id | Delete a specific user
+GET  | /contacts | Get a list of all contacts
+GET  | /contacts/id | Get a specific contact by id
+POST | /contacts | Create a new contact
+PUT | /contacts/id | Update an existing contact
+DELETE | /contacts/id | Delete a specific contact
 
-###TODO
-1. Move route logic out of app.js to respective routes directory.
-2. Better error handling on retrieval of record.
 
