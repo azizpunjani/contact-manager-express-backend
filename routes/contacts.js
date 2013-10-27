@@ -1,7 +1,3 @@
-
-/*
- * GET contacts listing.
- */
 var db = require('monk')('localhost/contactManager'),
     contacts = db.get('contacts');
 
