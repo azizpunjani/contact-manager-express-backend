@@ -25,7 +25,7 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
-//Get contacts, with optional search query term name=first last
+//Get all contacts
 app.get('/contacts', contacts.getAll);
 
 //Get a user by id
