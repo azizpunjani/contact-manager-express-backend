@@ -42,7 +42,7 @@ app.del('/contacts/:id', contacts.delete);
 
 //Index page
 app.get('/', function(req, res){
-    res.sendfile(path.join(__dirname, 'public/app/index.html'));
+    res.sendfile(path.join(__dirname, 'public/index.html'));
 });
 
 http.createServer(app).listen(app.get('port'), function(){
