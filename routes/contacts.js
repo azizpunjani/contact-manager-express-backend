@@ -28,7 +28,7 @@ exports.get = function(req, res){
 exports.post = function(req, res){
     contacts.insert(req.body, function(err, record){
         if (record) {
-            res.send({ success: true, record: record });
+            res.send(record);
         } else {
             res.send({ success: false, error: 'Unable to insert record'});
         }
@@ -39,15 +39,14 @@ exports.post = function(req, res){
 //Update a contact
 exports.put = function(req, res){
     if ( '_id' in req.body) delete req.body._id;
-    console.log(req.body);
     contacts.update(req.params.id, req.body, function(err, success){
+        req.body._id = req.params.id;    
         if (success) {
-            res.send({ success: true });
+            res.send(req.body);
         } else {
             res.send({ success: false, error: 'Unable to update record'});
         }
     });
-
 };
 
 //Delete a contact
