@@ -27,7 +27,7 @@ Install the required project dependencies
 To get some sample data into mongodb for testing purposes, this repo has a sampleDb directory which can be imported. To import the data
 simply run the following command.
 
-    mongorestore sampleDb --db contactManager
+    mongorestore sampleDB --db contactManager
 
 
 
