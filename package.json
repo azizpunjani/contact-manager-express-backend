@@ -7,8 +7,6 @@
   },
   "dependencies": {
     "express": "3.3.4",
-    "jade": "*",
-    "less-middleware": "*",
-    "monk": "*"
+    "monk": "0.7.1"
   }
 }

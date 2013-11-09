@@ -4,9 +4,9 @@
  */
 
 var express = require('express')
-  , contacts = require('./routes/contacts')
-  , http = require('http')
-  , path = require('path');
+   contacts = require('./routes/contacts'),
+   http = require('http'),
+   path = require('path');
 
 var app = express();
 
@@ -17,7 +17,6 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(app.router);
-app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
